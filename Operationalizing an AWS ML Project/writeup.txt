@@ -1,0 +1,18 @@
+first stage :chose instance type of sagemaker i used ml.t3.meduim because i this case i will work on cpu not gpu
+so to reduce cost and alos it have about 2 cpu and containd 4 GB RAM and i see it suitable for my project .
+
+second stage : in case of deployment first one is called dogbreed-single-instance it about deploy the first model
+that work on a sinle instance and second one is called dogbreed-multi-instance it work with model that trained on 
+multi instance so it used in case of deployment and also provided for this endpoint autoscaling to handle with high traffic to be faster and have low latency .
+third stage : run code on pure EC2 not on sagemaker it more easy and faster than in case of sagemaker because it will not
+establish more jobs and run container environment it will run without it so it will be easy and not consume time , and
+also more cheaper but not perfect as sagemaker because it provide many of usages and tools will be helpful in our project.
+
+fourth stage : after we make deployment we need to establish a lambda layer to put in production the lambda function by defaut not have access the sagemaker ebdpoint or any services so we must attach policies to make it have permission to 
+access endpoint and also i make lambda can handle with high trafic by make conncurence so it will increase instances to can handle with high traffic to be more faster and also to be sufficient with our endpoint that provides auto-sacling
+
+secutiy issues: we need to increase security level and not allowed for every one to acces our aws workspace one of this
+solution to specific which user is allowed to go on and can make change and alos make a private ip by using VPC it will add more security for our workspace .
+
+last issue: add concurency and auto-scaling to make our application fater and can handle with high traffic and give us low latency se we need to increase computing when it needed or when there are a high request so we first make auto scaling to our endpoint can increase to 4 instance and wait about 30 s to scale in and 300 to scale down it will give a high speed to our endpoint and also i specific concurence to can handle with high requests as i make in lambda function
+i specific for it about 7 instance to handle with high traffic .
